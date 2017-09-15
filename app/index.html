@@ -3,19 +3,24 @@
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	</head>
+	<style>.active { color: red; font-weight: bold; }</style>
 	<title>MCQ</title>
 	<body ng-app="MCQ">
 		<nav class="navbar navbar-default">
 		  <div class="container-fluid">
 		    <div class="navbar-header">
-		      <a class="navbar-brand" href="#">Tanituts MCQ</a>
+		      <a class="navbar-brand" ui-sref="hello">Tanituts MCQ</a>
 		    </div>
 		    <ul class="nav navbar-nav">
-		      <li class="active"><a href="#">Home</a></li>
+	      		<li>
+		      		<a ui-sref="home" ui-sref-active="active">Home</a>
+	      		</li>
+	      		<li>
+		      		<a ui-sref="about" ui-sref-active="active">About</a>
+	      		</li>
 		    </ul>
 		  </div>
 		</nav>
-		This is {{ 'Rachit' + 'Bhasin' }}
 		<ui-view></ui-view>
 	</body>
 	<footer>
