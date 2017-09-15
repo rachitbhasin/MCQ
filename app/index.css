@@ -1,0 +1,29 @@
+
+/*margins*/
+.m-auto {
+	margin: 0 auto;
+}
+
+.m2 {
+	margin: 2px;
+}
+
+.m4 {
+	margin: 4px;
+}
+
+.m8 {
+	margin: 8px;
+}
+
+.m16 {
+	margin: 16px;
+}
+
+.m32 {
+	margin: 32px;
+}
+
+.m48 {
+	margin: 48px;
+}

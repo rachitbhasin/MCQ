@@ -1,7 +1,11 @@
 <html>
 	<head>
-		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="index.css">
+
+		<!-- Bootstrap -->
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		
+		<base href="/">
 	</head>
 	<style>.active { color: red; font-weight: bold; }</style>
 	<title>MCQ</title>
@@ -9,14 +13,14 @@
 		<nav class="navbar navbar-default">
 		  <div class="container-fluid">
 		    <div class="navbar-header">
-		      <a class="navbar-brand" ui-sref="hello">Tanituts MCQ</a>
+		      <a class="navbar-brand" ui-sref="home">Tanituts MCQ</a>
 		    </div>
 		    <ul class="nav navbar-nav">
 	      		<li>
 		      		<a ui-sref="home" ui-sref-active="active">Home</a>
 	      		</li>
 	      		<li>
-		      		<a ui-sref="about" ui-sref-active="active">About</a>
+		      		<a ui-sref="create" ui-sref-active="active">Create</a>
 	      		</li>
 		    </ul>
 		  </div>
@@ -27,12 +31,15 @@
 		<!-- Jquery -->
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 		
-		<!-- Boostrap JavaScript -->
+		<!-- Bootstrap JavaScript -->
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		
 		<!-- AngularJS -->
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js" type="text/javascript"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js" type="text/javascript"></script>
+
 		<script src="./app.js" type="text/javascript"></script>
+		<script src="./controllers/home/index.js" type="text/javascript"></script>
+		<script src="./controllers/create/index.js" type="text/javascript"></script>
 	</footer>
 </html>
