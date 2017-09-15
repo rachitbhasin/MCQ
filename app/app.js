@@ -1,1 +1,3 @@
-var app = angular.module('MCQ', []);
+'use strict'
+
+var app = angular.module('MCQ', ['ui.router']);
