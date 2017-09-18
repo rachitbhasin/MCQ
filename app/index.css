@@ -58,7 +58,6 @@
 
 .fixed_button_group {
     position: fixed;
-    top:40%;
-    bottom: 0px;
-    right: 0px; 
+    right: 0px;
+    z-index: 9999;
 }

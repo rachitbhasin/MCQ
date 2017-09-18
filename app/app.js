@@ -39,5 +39,4 @@ mcqApp.config([
 	$stateProvider.state(homeState);
   	$stateProvider.state(aboutState);
   	$stateProvider.state(notFound);
-}])
-
+}]);

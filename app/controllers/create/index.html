@@ -1,70 +1,67 @@
 <section class="m32">
 	<div class="fixed_button_group">
-		<div class="form-group col-xs-12">
-			<button class="form-control btn btn-primary"> Add </button>	
+		<div class="col-xs-12 form-group">
+			<button class="form-control btn btn-primary" x:ng:click="onAddClicked()"> Add </button>	
 		</div>
-		<div class="form-group col-xs-12">
-			<button class="form-control btn btn-success">Save</button>	
+		<div class="col-xs-12 form-group">
+			<button class="form-control btn btn-success" x:ng:click="onSaveClicked()"> Save </button>	
 		</div>
 	</div>
-	<div class="container" x:ng:repeat="n in [42, 42, 43, 43] track by $index">
+	<div class="container">
 		<div class="row">
-			<div class="form-group col-xs-4">
-				<label for="title">Title {{n}}</label>
-				<input type="text" class="form-control" name="title">
+			<div class="col-xs-6 form-group">
+				<label for="title">Title</label>
+				<input class="form-control" 
+					name="title"
+					type="text" 
+					x:ng:model="mcqData.title" 
+					x:ng:model-options="{updateOn: 'blur'}">
 			</div>
-			<div class="form-group col-xs-4">
+			<div class="col-xs-6 form-group">
 				<label for="technology">Technology</label>
-				<input type="text" class="form-control" name="technology">
-			</div>
-			<div class="col-xs-4">
-				
+				<input class="form-control" 
+					name="technology"
+					type="text" 
+					x:ng:model="mcqData.technology" 
+					x:ng:model-options="{updateOn: 'blur'}">
 			</div>
 		</div>
 		
-		<div class="row">
+		<div class="row" x:ng:repeat="item in mcqData.questions track by $index">
 			<div class="col-xs-6">
 				<div class="row">
-					<div class="form-group col-xs-12">
+					<div class="col-xs-12 form-group">
 						<label for="question">Question</label>
-						<textarea class="form-control" name="question"></textarea>
+						<textarea class="form-control"
+							name="question"
+							x:ng:model="item.question" 
+							x:ng:model-options="{updateOn: 'blur'}">
+						</textarea>
 					</div>
 				</div>
 				<div class="row">
-					<div class="form-group col-xs-6">
-						<label for="answer1">Answer 1</label>
-						<input type="text" class="form-control" name="answer1">
-					</div>
-					<div class="form-group col-xs-6">
-						<label for="answer2">Answer 2</label>
-						<input type="text" class="form-control" name="answer2">
-					</div>
-				</div>
-				<div class="row">
-					<div class=" form-group col-xs-6">
-						<label for="answer3">Answer 3</label>
-						<input type="text" class="form-control" name="answer3">
-					</div>
-					<div class="form-group col-xs-6">
-						<label for="answer4">Answer 4</label>
-						<input type="text" class="form-control" name="answer4">
+					<div class="col-xs-6 form-group" x:ng:repeat="answer in item.answers track by $index">
+						<label for="answer_{{$index+1}}" >Answer {{$index + 1}}</label>
+						<input name="$index"
+								type="radio"
+								x:ng:value=answer.isSelected
+								x:ng:model="answer.isSelected">
+						<input class="form-control"
+							name="answer_{{$index+1}}"
+							type="text" 
+							x:ng:model="answer.answer" 
+							x:ng:model-options="{updateOn: 'blur'}">
+
 					</div>
 				</div>
 			</div>
-
-			
 
 			<div class="form-group col-xs-6">
 				<label for="code">Code</label>
-				<div  ui-ace></div>
+				<div  ui-ace ng-model="item.code">
+				</div>
 			</div>
-
-		</div>
-		
-		<div class="row">
-			
-		</div>
-		
+		</div>		
 	</div>
 </section>
 
