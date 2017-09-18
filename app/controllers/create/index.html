@@ -1,14 +1,70 @@
 <section class="m32">
-	<form>
-		<div>
+	<div class="fixed_button_group">
+		<div class="form-group col-xs-12">
+			<button class="form-control btn btn-primary"> Add </button>	
+		</div>
+		<div class="form-group col-xs-12">
+			<button class="form-control btn btn-success">Save</button>	
+		</div>
+	</div>
+	<div class="container" x:ng:repeat="n in [42, 42, 43, 43] track by $index">
+		<div class="row">
 			<div class="form-group col-xs-4">
-				<label for="email">Title</label>
-				<input type="email" class="form-control" id="email">
+				<label for="title">Title {{n}}</label>
+				<input type="text" class="form-control" name="title">
 			</div>
 			<div class="form-group col-xs-4">
-				<label for="pwd">Technology</label>
-				<input type="password" class="form-control" id="pwd">
+				<label for="technology">Technology</label>
+				<input type="text" class="form-control" name="technology">
+			</div>
+			<div class="col-xs-4">
+				
 			</div>
 		</div>
-	</form>
+		
+		<div class="row">
+			<div class="col-xs-6">
+				<div class="row">
+					<div class="form-group col-xs-12">
+						<label for="question">Question</label>
+						<textarea class="form-control" name="question"></textarea>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-xs-6">
+						<label for="answer1">Answer 1</label>
+						<input type="text" class="form-control" name="answer1">
+					</div>
+					<div class="form-group col-xs-6">
+						<label for="answer2">Answer 2</label>
+						<input type="text" class="form-control" name="answer2">
+					</div>
+				</div>
+				<div class="row">
+					<div class=" form-group col-xs-6">
+						<label for="answer3">Answer 3</label>
+						<input type="text" class="form-control" name="answer3">
+					</div>
+					<div class="form-group col-xs-6">
+						<label for="answer4">Answer 4</label>
+						<input type="text" class="form-control" name="answer4">
+					</div>
+				</div>
+			</div>
+
+			
+
+			<div class="form-group col-xs-6">
+				<label for="code">Code</label>
+				<div  ui-ace></div>
+			</div>
+
+		</div>
+		
+		<div class="row">
+			
+		</div>
+		
+	</div>
 </section>
+

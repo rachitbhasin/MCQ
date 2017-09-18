@@ -1,6 +1,6 @@
 'use strict'
 
-var mcqApp = angular.module('MCQ', ['ui.router']);
+var mcqApp = angular.module('MCQ', ['ui.router', 'ui.ace']);
 
 mcqApp.controller('homeController', ['$scope', function($scope){
 	$scope.title = 'hello';

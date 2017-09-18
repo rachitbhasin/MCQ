@@ -27,3 +27,38 @@
 .m48 {
 	margin: 48px;
 }
+
+/*Paddings*/
+
+.p2 {
+	padding: 2px;
+}
+
+.p4 {
+	padding: 4px;
+}
+
+.p8 {
+	padding: 8px;
+}
+
+.p16 {
+	padding: 16px;
+}
+
+.p32 {
+	padding: 32px;
+}
+
+.p48 {
+	padding: 48px;
+}
+
+.ace_editor { height: 200px; }
+
+.fixed_button_group {
+    position: fixed;
+    top:40%;
+    bottom: 0px;
+    right: 0px; 
+}
