@@ -1,18 +1,17 @@
 <section class="m32">
-	<form class="mcq_create_form"
+	<form class="mcq_create_form fluid-container"
 		name="mcqForm" 
-		novalidate 
-		x:ng:submit="onSaveClicked($event)">
+		novalidate>
 		<!-- <div>{{mcqForm.title | json}}</div> -->
-		<div class="fixed_button_group">
+		<div class="w10 fixed_button_group">
 			<div class="col-xs-12 form-group">
-				<button class="form-control btn btn-primary" x:ng:click="onAddClicked()"> Add </button>	
+				<button class="form-control btn btn-primary" x:ng:click="onAddClicked($event)"> Add </button>	
 			</div>
 			<div class="col-xs-12 form-group">
-				<input class="form-control btn btn-success" type="submit" value="Save">
+				<button class="form-control btn btn-success" x:ng:click="onSaveClicked($event)"> Save </button>
 			</div>
 		</div>
-		<div class="container">
+		<div class="w90">
 			<div class="row">
 				<div class="col-xs-4 form-group">
 					<label for="title">Title</label>

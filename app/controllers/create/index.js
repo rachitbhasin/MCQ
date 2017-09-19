@@ -1,4 +1,4 @@
-angular.module('MCQ').controller('CreateController', ['$scope', '$state', function(scope, state){
+angular.module('MCQ').controller('CreateController', ['$scope', '$state', 'mcqService', function(scope, state, mcqService){
 
 	scope.mcqData = {
 		title: "",
@@ -7,7 +7,9 @@ angular.module('MCQ').controller('CreateController', ['$scope', '$state', functi
 		]
 	};
 
-	scope.onAddClicked = function(){
+	scope.onAddClicked = function(event){
+		event.stopPropagation();
+    	event.preventDefault();
 		scope.mcqData.questions.push({
 			question: "",
 			code: "",
@@ -20,21 +22,20 @@ angular.module('MCQ').controller('CreateController', ['$scope', '$state', functi
 				{text: ""},
 			]
 		});
+		console.log("onAdd")
 	}
 
 	scope.onSaveClicked = function(event) {
-		event.preventDefault();
+		event.stopPropagation();
+    	event.preventDefault();
+    	console.log("onSave");
 		console.log(scope.mcqData);
+		mcqService.createMcq(angular.copy(scope.mcqData));
+		state.go('home');
 	}
 
 	// @param nextState 
 	scope.gotoState = function(nextState){
 		state.go(nextState);
-	}
-
-	scope.onCodeChange = function(event){
-		console.log(event);
-
-		console.log(arguments);
 	}
 }])

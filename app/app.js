@@ -33,6 +33,11 @@ mcqApp.config([
 		url: '/home',
 		templateUrl: './controllers/home/index.html',
 		controller: 'HomeController',
+		resolve: {
+			getMcqList: function(mcqService) {
+				return mcqService.getMcqList();
+			}
+		}
 	}
 
 	var aboutState = {

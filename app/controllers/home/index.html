@@ -1,7 +1,23 @@
 <section class="m32">
-	<div>
-		<button 
-			class="btn btn-primary"
-			x:ng:click="gotoState('create')">Create MCQ</button>
-	</div>	
+	<div class="container">
+		<div class="row">
+			<button 
+				class="btn btn-primary"
+				x:ng:click="gotoState('create')">Create MCQ</button>
+		</div>	
+		<div class="row" x:ng:repeat="mcq in mcqList track by $index">
+			<div class="col-xs-5">
+				{{mcq.title}}
+			</div>
+			<div class="col-xs-3">
+				{{mcq.technology}}
+			</div>
+			<div class="col-xs-2">
+				<button>Edit</button>
+			</div>
+			<div class="col-xs-2">
+				Start
+			</div>
+		</div>
+	</div>
 </section>
