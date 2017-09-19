@@ -1,67 +1,98 @@
 <section class="m32">
-	<div class="fixed_button_group">
-		<div class="col-xs-12 form-group">
-			<button class="form-control btn btn-primary" x:ng:click="onAddClicked()"> Add </button>	
-		</div>
-		<div class="col-xs-12 form-group">
-			<button class="form-control btn btn-success" x:ng:click="onSaveClicked()"> Save </button>	
-		</div>
-	</div>
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-6 form-group">
-				<label for="title">Title</label>
-				<input class="form-control" 
-					name="title"
-					type="text" 
-					x:ng:model="mcqData.title" 
-					x:ng:model-options="{updateOn: 'blur'}">
+	<form class="mcq_create_form"
+		name="mcqForm" 
+		novalidate 
+		x:ng:submit="onSaveClicked($event)">
+		<!-- <div>{{mcqForm.title | json}}</div> -->
+		<div class="fixed_button_group">
+			<div class="col-xs-12 form-group">
+				<button class="form-control btn btn-primary" x:ng:click="onAddClicked()"> Add </button>	
 			</div>
-			<div class="col-xs-6 form-group">
-				<label for="technology">Technology</label>
-				<input class="form-control" 
-					name="technology"
-					type="text" 
-					x:ng:model="mcqData.technology" 
-					x:ng:model-options="{updateOn: 'blur'}">
+			<div class="col-xs-12 form-group">
+				<input class="form-control btn btn-success" type="submit" value="Save">
 			</div>
 		</div>
-		
-		<div class="row" x:ng:repeat="item in mcqData.questions track by $index">
-			<div class="col-xs-6">
-				<div class="row">
-					<div class="col-xs-12 form-group">
-						<label for="question">Question</label>
-						<textarea class="form-control"
-							name="question"
-							x:ng:model="item.question" 
-							x:ng:model-options="{updateOn: 'blur'}">
-						</textarea>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-4 form-group">
+					<label for="title">Title</label>
+					<input class="form-control" 
+						name="title"
+						placeholder="Enter title" 
+						required
+						type="text" 
+						x:ng:model="mcqData.title" 
+						x:ng:model-options="{updateOn: 'blur'}">
+						<p class="validation-text" x:ng:show="mcqForm.title.$invalid && !mcqForm.title.$pristine">{{mcqForm.title.$name | capitalize:1}} is required.</p>
+				</div>
+				<div class="col-xs-4 form-group">
+					<label for="technology">Technology</label>
+					<input class="form-control" 
+						name="technology"
+						placeholder="Enter technology" 
+						required
+						type="text" 
+						x:ng:model="mcqData.technology" 
+						x:ng:model-options="{updateOn: 'blur'}">
+						<p class="validation-text" x:ng:show="mcqForm.technology.$invalid && !mcqForm.technology.$pristine">{{mcqForm.technology.$name | capitalize:1}} is required.</p>
+				</div>
+				<div class="col-xs-4 form-group">
+					<label for="link">Link</label>
+					<input class="form-control" 
+						name="link"
+						placeholder="Enter link" 
+						required
+						type="link" 
+						x:ng:model="mcqData.link" 
+						x:ng:model-options="{updateOn: 'blur'}">
+						<p class="validation-text" x:ng:show="mcqForm.link.$invalid && !mcqForm.link.$pristine">{{mcqForm.link.$name | capitalize:1}} is required.</p>
+				</div>
+			</div>
+			
+			<div class="row" x:ng:repeat="item in mcqData.questions track by $index">
+				<div class="col-xs-6">
+					<div class="row">
+						<div class="col-xs-12 form-group" x:ng:form="questionForm">
+							<label for="question">Question {{$index + 1}}</label>
+							<textarea class="form-control"
+								name="question"
+								placeholder="Enter question {{$index +1 }}"
+								required 
+								x:ng:model="item.question" 
+								x:ng:model-options="{updateOn: 'blur'}">
+							</textarea>
+							<p class="validation-text" x:ng:show="questionForm.question.$invalid && !questionForm.question.$pristine">{{questionForm.question.$name | capitalize:1}} is required.</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-6 form-group" x:ng:repeat="answer in item.answers track by $index">
+							<div x:ng:form="answerForm">
+								<label for="answer_{{$index+1}}" >Answer {{$index + 1}} </label>
+								<input name="answer_{{$index+1}}"
+										type="radio"
+										x:ng:value="$index"
+										x:ng:model="value">
+								<span class="validation-text" x:ng:show="answerForm.answerText.$invalid && !answerForm.answerText.$pristine">Answer {{$index + 1}} is required.</span>
+								<input class="form-control"
+									name="answerText"
+									placeholder="Enter answer {{$index + 1}}" 
+									required
+									type="text"
+									x:ng:model="answer.text" 
+									x:ng:model-options="{updateOn: 'blur'}">
+								
+							</div>
+						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-xs-6 form-group" x:ng:repeat="answer in item.answers track by $index">
-						<label for="answer_{{$index+1}}" >Answer {{$index + 1}}</label>
-						<input name="$index"
-								type="radio"
-								x:ng:value=answer.isSelected
-								x:ng:model="answer.isSelected">
-						<input class="form-control"
-							name="answer_{{$index+1}}"
-							type="text" 
-							x:ng:model="answer.answer" 
-							x:ng:model-options="{updateOn: 'blur'}">
 
+				<div class="form-group col-xs-6">
+					<label for="code">Code</label>
+					<div  ui-ace ng-model="item.code">
 					</div>
 				</div>
-			</div>
-
-			<div class="form-group col-xs-6">
-				<label for="code">Code</label>
-				<div  ui-ace ng-model="item.code">
-				</div>
-			</div>
-		</div>		
-	</div>
+			</div>		
+		</div>
+	</form>
 </section>
 

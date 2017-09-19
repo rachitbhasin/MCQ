@@ -2,19 +2,25 @@
 
 var mcqApp = angular.module('MCQ', ['ui.router', 'ui.ace']);
 
-mcqApp.controller('homeController', ['$scope', function($scope){
-	$scope.title = 'hello';
-}])
 
+mcqApp.config(['$compileProvider',function(compileProvider){
+	// pass true as argument for development environment
+        compileProvider.debugInfoEnabled(true);
+        // we don't need to compile comment and css class directives
+        compileProvider.commentDirectivesEnabled(false);
+        compileProvider.cssClassDirectivesEnabled(false);
+}]);
+
+// Routes configuration
 mcqApp.config([
 	'$stateProvider', 
 	'$locationProvider', 
 	'$urlRouterProvider', 
-	($stateProvider, $locationProvider, $urlRouterProvider) => {
+	(stateProvider, locationProvider, urlRouterProvider) => {
 
-	$locationProvider.html5Mode(true);
+	locationProvider.html5Mode(true);
 
-	$urlRouterProvider.otherwise('/notFound');
+	urlRouterProvider.otherwise('/notFound');
 
 	var notFound = {
 		name: 'notFound',
@@ -36,7 +42,7 @@ mcqApp.config([
 		controller: 'CreateController',
 	}
 
-	$stateProvider.state(homeState);
-  	$stateProvider.state(aboutState);
-  	$stateProvider.state(notFound);
+	stateProvider.state(homeState);
+  	stateProvider.state(aboutState);
+  	stateProvider.state(notFound);
 }]);

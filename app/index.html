@@ -9,7 +9,7 @@
 	</head>
 	<style>.active { color: red; font-weight: bold; }</style>
 	<title>MCQ</title>
-	<body ng-app="MCQ">
+	<body ng-app="MCQ" ng-strict-di>
 		<nav class="navbar navbar-default">
 		  <div class="container-fluid">
 		    <div class="navbar-header">
@@ -47,5 +47,6 @@
 		<script src="./app.js" type="text/javascript"></script>
 		<script src="./controllers/home/index.js" type="text/javascript"></script>
 		<script src="./controllers/create/index.js" type="text/javascript"></script>
+		<script src="./shared/filters/capitalize.filter.js" type="text/javascript"></script>
 	</footer>
 </html>

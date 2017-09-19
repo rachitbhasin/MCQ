@@ -1,6 +1,4 @@
-var mcqApp = angular.module('MCQ');
-
-mcqApp.controller('CreateController', ['$scope', '$state', function(scope, state){
+angular.module('MCQ').controller('CreateController', ['$scope', '$state', function(scope, state){
 
 	scope.mcqData = {
 		title: "",
@@ -13,16 +11,19 @@ mcqApp.controller('CreateController', ['$scope', '$state', function(scope, state
 		scope.mcqData.questions.push({
 			question: "",
 			code: "",
+			link:"",
+			correctAnswer: undefined,
 			answers: [
-				{answer: "", isSelected: false},
-				{answer: "", isSelected: false},
-				{answer: "", isSelected: false},
-				{answer: "", isSelected: false},
+				{text: ""},
+				{text: ""},
+				{text: ""},
+				{text: ""},
 			]
 		});
 	}
 
-	scope.onSaveClicked = function() {
+	scope.onSaveClicked = function(event) {
+		event.preventDefault();
 		console.log(scope.mcqData);
 	}
 

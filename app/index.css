@@ -56,8 +56,17 @@
 
 .ace_editor { height: 200px; }
 
+/* Floating right button set */
 .fixed_button_group {
     position: fixed;
     right: 0px;
     z-index: 9999;
+}
+
+.validation-text {
+	color: red;
+}
+
+.form-control.ng-dirty.ng-invalid{
+	border: 1px solid red;
 }
