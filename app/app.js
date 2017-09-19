@@ -1,6 +1,6 @@
 'use strict'
 
-var mcqApp = angular.module('MCQ', ['ui.router', 'ui.ace']);
+var mcqApp = angular.module('MCQ', ['ui.router', 'ui.ace', 'ngMaterial']);
 
 
 mcqApp.config(['$compileProvider',function(compileProvider){

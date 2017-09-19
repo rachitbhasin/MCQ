@@ -1,9 +1,7 @@
 <section class="m32">
 	<div class="container">
 		<div class="row">
-			<button 
-				class="btn btn-primary"
-				x:ng:click="gotoState('create')">Create MCQ</button>
+			<md-button class="md-raised md-primary" x:ng:click="gotoState('create')">Create Quiz</md-button>
 		</div>	
 		<div class="row" x:ng:repeat="mcq in mcqList track by $index">
 			<div class="col-xs-5">
