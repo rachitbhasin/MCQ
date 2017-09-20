@@ -16,53 +16,73 @@
 		<div class="w90">
 			<div class="row">
 				<div class="col-xs-4 form-group">
-					<label for="title">Title</label>
-					<input class="form-control" 
-						name="title"
-						placeholder="Enter title" 
-						required
-						type="text" 
-						x:ng:model="mcqData.title" 
-						x:ng:model-options="{updateOn: 'blur'}">
-						<p class="validation-text" x:ng:show="mcqForm.title.$invalid && !mcqForm.title.$pristine">{{mcqForm.title.$name | capitalize:1}} is required.</p>
+					<md-input-container class="md-block" flex-gt-sm>
+			            <label>Title</label>						
+			            <input required
+			            	md-maxlength="30"
+			            	md-no-asterisk
+			            	name="title"
+							type="text"
+			            	x:ng:model="mcqData.title" 
+							x:ng:model-options="{debounce: 500}">
+						<div ng-messages="mcqForm.title.$error">
+							<div ng-message="required">This is required.</div>
+							<div ng-message="md-maxlength">The title must be less than 30 characters long.</div>
+						</div>
+					</md-input-container>
+					{{mcqForm.title | json}}
 				</div>
+					
 				<div class="col-xs-4 form-group">
-					<label for="technology">Technology</label>
-					<input class="form-control" 
-						name="technology"
-						placeholder="Enter technology" 
-						required
-						type="text" 
-						x:ng:model="mcqData.technology" 
-						x:ng:model-options="{updateOn: 'blur'}">
-						<p class="validation-text" x:ng:show="mcqForm.technology.$invalid && !mcqForm.technology.$pristine">{{mcqForm.technology.$name | capitalize:1}} is required.</p>
-				</div>
-				<div class="col-xs-4 form-group">
-					<label for="link">Link</label>
-					<input class="form-control" 
-						name="link"
-						placeholder="Enter link" 
-						required
-						type="link" 
-						x:ng:model="mcqData.link" 
-						x:ng:model-options="{updateOn: 'blur'}">
-						<p class="validation-text" x:ng:show="mcqForm.link.$invalid && !mcqForm.link.$pristine">{{mcqForm.link.$name | capitalize:1}} is required.</p>
+					<md-input-container class="md-block" flex-gt-sm>
+						<label for="technology">Technology</label>
+						<input class="form-control"
+							md-maxlength="30"
+			            	md-no-asterisk
+							name="technology"
+							required
+							type="text" 
+							x:ng:model="mcqData.technology" 
+							x:ng:model-options="{debounce: 500}">
+						<div ng-messages="mcqForm.technology.$error">
+							<div ng-message="required">This is required.</div>
+							<div ng-message="md-maxlength">The title must be less than 30 characters long.</div>
+						</div>
+					</md-input-container>
 				</div>
 			</div>
 			
 			<div class="row" x:ng:repeat="item in mcqData.questions track by $index">
 				<div class="col-xs-6">
-					<div class="row">
-						<div class="col-xs-12 form-group" x:ng:form="questionForm">
-							<label for="question">Question {{$index + 1}}</label>
-							<textarea class="form-control"
-								name="question"
-								placeholder="Enter question {{$index +1 }}"
-								required 
-								x:ng:model="item.question" 
-								x:ng:model-options="{updateOn: 'blur'}">
-							</textarea>
-							<p class="validation-text" x:ng:show="questionForm.question.$invalid && !questionForm.question.$pristine">{{questionForm.question.$name | capitalize:1}} is required.</p>
+					<div class="row" x:ng:form="questionForm">
+						<div class="col-xs-8 form-group">
+							<md-input-container class="md-block" flex-gt-sm>
+								<label for="question">Question {{$index + 1}}</label>
+								<textarea class="form-control"
+									name="question"
+									md-maxlength="150"
+									md-select-on-focus
+									required 
+									rows="3"
+									x:ng:model="item.question" 
+									x:ng:model-options="{debounce: 500}">
+								</textarea>
+							</md-input-container>
+						</div>
+						<div class="col-xs-4 form-group" >
+							<md-input-container class="md-block" flex-gt-sm>
+								<label for="link">Link</label>
+								<textarea class="form-control" 
+									name="link"
+									md-maxlength="150"
+									md-select-on-focus
+									required
+									rows="3"
+									type="link" 
+									x:ng:model="item.link" 
+									x:ng:model-options="{debounce: 500}">
+								</textarea>
+							</md-input-container>
 						</div>
 					</div>
 					<div class="row">
@@ -73,14 +93,13 @@
 										type="radio"
 										x:ng:value="$index"
 										x:ng:model="value">
-								<span class="validation-text" x:ng:show="answerForm.answerText.$invalid && !answerForm.answerText.$pristine">Answer {{$index + 1}} is required.</span>
 								<input class="form-control"
 									name="answerText"
 									placeholder="Enter answer {{$index + 1}}" 
 									required
 									type="text"
 									x:ng:model="answer.text" 
-									x:ng:model-options="{updateOn: 'blur'}">
+									x:ng:model-options="{debounce: 500}">
 								
 							</div>
 						</div>
