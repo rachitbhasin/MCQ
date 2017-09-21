@@ -1,5 +1,5 @@
 
-/*margins*/
+/*MARGINS*/
 .m-auto {
 	margin: 0 auto;
 }
@@ -28,7 +28,32 @@
 	margin: 48px;
 }
 
-/*Paddings*/
+/*TOP MARGINS*/
+.mt2 {
+	margin-top: 2px;
+}
+
+.mt4 {
+	margin-top: 4px;
+}
+
+.mt8 {
+	margin-top: 8px;
+}
+
+.mt16 {
+	margin-top: 16px;
+}
+
+.mt32 {
+	margin-top: 32px;
+}
+
+.mt48 {
+	margin-top: 48px;
+}
+
+/*PADDINGS*/
 
 .p2 {
 	padding: 2px;
@@ -54,7 +79,33 @@
 	padding: 48px;
 }
 
-/*Widths*/
+/*TOP PADDINGS*/
+
+.pt2 {
+	padding-top: 2px;
+}
+
+.pt4 {
+	padding-top: 4px;
+}
+
+.pt8 {
+	padding-top: 8px;
+}
+
+.pt16 {
+	padding-top: 16px;
+}
+
+.pt32 {
+	padding-top: 32px;
+}
+
+.pt48 {
+	padding-top: 48px;
+}
+
+/*WIDTHS*/
 .w10{
 	width: 10%;
 }
@@ -95,7 +146,7 @@
 	width: 100%;
 }
 
-.ace_editor { height: 200px; }
+.ace_editor { height: 250px; }
 
 /* Floating right button set */
 .fixed_button_group {
@@ -111,3 +162,9 @@
 .form-control.ng-dirty.ng-invalid{
 	border: 1px solid red;
 }
+
+.question-bottom-border {
+	border-bottom: 1px solid rgb(63,81,181);
+    box-shadow: 0px 0px 2px 0px;
+}
+

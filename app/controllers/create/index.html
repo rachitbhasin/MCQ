@@ -27,10 +27,9 @@
 							x:ng:model-options="{debounce: 500}">
 						<div ng-messages="mcqForm.title.$error">
 							<div ng-message="required">This is required.</div>
-							<div ng-message="md-maxlength">The title must be less than 30 characters long.</div>
+							<div ng-message="md-maxlength">{{::mcqForm.title.$name | capitalize}} must be less than 30 characters.</div>
 						</div>
 					</md-input-container>
-					{{mcqForm.title | json}}
 				</div>
 					
 				<div class="col-xs-4 form-group">
@@ -46,63 +45,82 @@
 							x:ng:model-options="{debounce: 500}">
 						<div ng-messages="mcqForm.technology.$error">
 							<div ng-message="required">This is required.</div>
-							<div ng-message="md-maxlength">The title must be less than 30 characters long.</div>
+							<div ng-message="md-maxlength">{{::mcqForm.technology.$name | capitalize}} must be less than 30 characters</div>
 						</div>
 					</md-input-container>
 				</div>
 			</div>
 			
-			<div class="row" x:ng:repeat="item in mcqData.questions track by $index">
+			<div class="row question-bottom-border mt8 p16" x:ng:repeat="item in mcqData.questions track by $index">
 				<div class="col-xs-6">
 					<div class="row" x:ng:form="questionForm">
 						<div class="col-xs-8 form-group">
 							<md-input-container class="md-block" flex-gt-sm>
-								<label for="question">Question {{$index + 1}}</label>
+								<label for="question">Question {{::$index + 1}}</label>
 								<textarea class="form-control"
-									name="question"
 									md-maxlength="150"
+									md-no-asterisk
 									md-select-on-focus
-									required 
-									rows="3"
-									x:ng:model="item.question" 
+									name="question"
+									required
+									rows="1"
+									x:ng:model="item.question"
 									x:ng:model-options="{debounce: 500}">
 								</textarea>
+								<div ng-messages="questionForm.question.$error">
+									<div ng-message="required">This is required.</div>
+									<div ng-message="md-maxlength">{{::questionForm.question.$name | capitalize}} {{::$index + 1}} must be less than 150 characters.</div>
+								</div>
 							</md-input-container>
 						</div>
 						<div class="col-xs-4 form-group" >
 							<md-input-container class="md-block" flex-gt-sm>
 								<label for="link">Link</label>
 								<textarea class="form-control" 
-									name="link"
 									md-maxlength="150"
+									md-no-asterisk
 									md-select-on-focus
+									name="link"
 									required
-									rows="3"
+									rows="1"
 									type="link" 
 									x:ng:model="item.link" 
 									x:ng:model-options="{debounce: 500}">
 								</textarea>
+								<div ng-messages="questionForm.link.$error">
+									<div ng-message="required">This is required.</div>
+									<div ng-message="md-maxlength">{{::questionForm.link.$name | capitalize}} must be less than 150 characters.</div>
+								</div>
 							</md-input-container>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-xs-6 form-group" x:ng:repeat="answer in item.answers track by $index">
-							<div x:ng:form="answerForm">
-								<label for="answer_{{$index+1}}" >Answer {{$index + 1}} </label>
-								<input name="answer_{{$index+1}}"
-										type="radio"
-										x:ng:value="$index"
-										x:ng:model="value">
-								<input class="form-control"
-									name="answerText"
-									placeholder="Enter answer {{$index + 1}}" 
-									required
-									type="text"
-									x:ng:model="answer.text" 
-									x:ng:model-options="{debounce: 500}">
-								
+						<md-radio-group class="md-primary"
+							x:ng:model="item.correctAnswer">
+							<div class="col-xs-6 form-group" 
+								x:ng:repeat="answer in item.answers track by $index">
+								<div layout="row">
+									<md-radio-button 
+										ng-value="$index">	
+									</md-radio-button>	
+									<md-input-container class="md-block" flex-gt-sm x:ng:form="answerForm">
+										<label for="answer_{{$index+1}}" >Answer {{::$index + 1}} </label>
+										<input class="form-control"
+											md-maxlength="50"
+											md-no-asterisk
+											name="answer"
+											required
+											type="text"
+											x:ng:model="answer.text" 
+											x:ng:model-options="{debounce: 500}">
+										<div ng-messages="answerForm.answer.$error">
+											<div ng-message="required">This is required.</div>
+											<div ng-message="md-maxlength">{{::answerForm.answer.$name | capitalize}} {{::$index + 1}} must be less than 50 characters.</div>
+										</div>
+									</md-input-container>		
+								</div>
 							</div>
-						</div>
+						</md-radio-group>
 					</div>
 				</div>
 
