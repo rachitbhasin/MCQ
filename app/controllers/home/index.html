@@ -7,11 +7,11 @@
 			{{mcqList | json}}
 		</div> -->
 
-		<div flex-xs="" flex-wrap layout="row" layout-wrap>
-			<md-card x:ng:repeat="mcq in mcqList track by $index">
+		<div flex-xs flex-wrap layout="row" layout-wrap>
+			<md-card class="mcq-md-card" x:ng:repeat="mcq in mcqList track by $index">
 			  <img x:ng:src="{{'http://lorempixel.com/output/abstract-q-c-180-120-'+ ($index+1) % 10 + '.jpg'}}" class="md-card-image" alt="image caption">
 			  <md-card-title>
-			    <md-card-title-text>
+			    <md-card-title-text layout-wrap>
 			      <span class="md-headline">{{::mcq.title}}</span>
 			      <span class="md-subhead">{{::mcq.technology}}</span>
 			    </md-card-title-text>
