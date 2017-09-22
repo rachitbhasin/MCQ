@@ -40,14 +40,27 @@ mcqApp.config([
 		}
 	}
 
-	var aboutState = {
+	var createState = {
 		name: 'create',
 		url: '/create',
 		templateUrl: './controllers/create/index.html',
 		controller: 'CreateController',
 	}
 
+	var updateState = {
+		name: 'update',
+		url: '/update',
+		templateUrl: './controllers/update/index.html',
+		controller: 'UpdateController',
+		resolve: {
+			getMcqByIndex: ['$stateParams', function(stateParams){
+				console.log(stateParams);
+			}]
+		}
+	}
+
 	stateProvider.state(homeState);
-  	stateProvider.state(aboutState);
+  	stateProvider.state(createState);
   	stateProvider.state(notFound);
+  	stateProvider.state(updateState);
 }]);

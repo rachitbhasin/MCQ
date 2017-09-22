@@ -1,11 +1,8 @@
 <section class="md-margin">
 	<md-content class="md-padding" layout="column">
 		<div flex-xs="" layout="row">
-			<md-button class="md-raised md-cornered md-primary" x:ng:click="gotoState('create')">Create Quiz</md-button>
+			<x:md:button class="md-raised md-cornered md-primary" x:ng:click="gotoState('create')">Create Quiz</x:md:button>
 		</div>
-		<!-- <div layout="column">
-			{{mcqList | json}}
-		</div> -->
 
 		<div flex-xs flex-wrap layout="row" layout-wrap>
 			<md-card class="mcq-md-card" x:ng:repeat="mcq in mcqList track by $index">
@@ -16,10 +13,10 @@
 			      <span class="md-subhead">{{::mcq.technology}}</span>
 			    </md-card-title-text>
 			  </md-card-title>
-			  <md-card-actions layout="row" layout-align="start center">
-			    <md-button>Edit</md-button>
-			    <md-button>Take</md-button>
-			  </md-card-actions>
+			  <x:md:card:actions layout="row" layout-align="end center">
+			    <x:md:button class="md-raised md-cornered md-accent" x:ng:click="gotoState('update')">Edit</x:md:button>
+			    <x:md:button class="md-raised md-cornered md-primary">Take</x:md:button>
+			  </x:md:card:actions>
 			</md-card>
 		</div>
 	</md-content>
