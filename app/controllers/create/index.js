@@ -1,4 +1,4 @@
-angular.module('MCQ').controller('CreateController', ['$scope', '$state', 'mcqService', function(scope, state, mcqService){
+angular.module('MCQ').controller('CreateController', ['$scope', '$state', 'mcqService','$mdToast', function(scope, state, mcqService, mdToast){
 
 	scope.mcqData = {
 		title: "",
@@ -28,10 +28,18 @@ angular.module('MCQ').controller('CreateController', ['$scope', '$state', 'mcqSe
 	scope.onSaveClicked = function(event) {
 		event.stopPropagation();
     	event.preventDefault();
-    	console.log("onSave");
-		console.log(scope.mcqData);
-		mcqService.createMcq(angular.copy(scope.mcqData));
-		state.go('home');
+		if(scope.mcqForm.$invalid){
+			mdToast.show(
+		      mdToast.simple()
+		        .textContent('Incomplete form!')
+		        .position('top right')
+		        .hideDelay(3000)
+		    );
+		}else{
+			mcqService.createMcq(angular.copy(scope.mcqData));
+			state.go('home');	
+		}
+		
 	}
 
 	// @param nextState 
