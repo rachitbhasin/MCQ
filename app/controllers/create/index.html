@@ -5,11 +5,13 @@
 		<!-- <div>{{mcqForm.title | json}}</div> -->
 		<div class="w10 fixed_button_group">
 			<div class="col-xs-12 form-group">
-				<md-button class="md-raised md-cornered md-accent" 
+				<md-button aria-label="Add"
+					class="md-raised md-cornered md-accent" 
 					x:ng:click="onAddClicked($event)">Add</md-button>	
 			</div>
 			<div class="col-xs-12 form-group">
-				<md-button class="md-raised md-cornered md-primary" 
+				<md-button aria-label="Save"
+					class="md-raised md-cornered md-primary" 
 					x:ng:click="onSaveClicked($event)">Save</md-button>	
 			</div>
 		</div>
@@ -51,7 +53,15 @@
 				</div>
 			</div>
 			
-			<div class="row question-bottom-border mt8 p16" x:ng:repeat="item in mcqData.questions track by $index">
+			<div class="row question-bottom-border mt8 p16" style="position: relative;" x:ng:repeat="item in mcqData.questions track by $index">
+				<div style="position: absolute;top:0px;right:0px;">
+					<md-button class="md-icon-button md-button md-ink-ripple">
+						<md-icon class="material-icons" layout-right>
+							close
+						</md-icon>
+					</md-button>
+				</div>
+					
 				<div class="col-xs-6">
 					<div class="row" x:ng:form="questionForm">
 						<div class="col-xs-8 form-group">
@@ -100,7 +110,7 @@
 							<div class="col-xs-6 form-group" 
 								x:ng:repeat="answer in item.answers track by $index">
 								<div layout="row">
-									<md-radio-button 
+									<md-radio-button aria-label="Answer checkbox"
 										ng-value="$index">	
 									</md-radio-button>	
 									<md-input-container class="md-block" flex-gt-sm x:ng:form="answerForm">

@@ -146,6 +146,14 @@
 	width: 100%;
 }
 
+.float-right {
+	float: right;
+}
+
+.float-left {
+	float: left;
+}
+
 .ace_editor { height: 250px; }
 
 /* Floating right button set */
