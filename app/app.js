@@ -52,9 +52,14 @@ mcqApp.config([
 		url: '/update',
 		templateUrl: './controllers/update/index.html',
 		controller: 'UpdateController',
+		params: {
+			index: null
+		},
 		resolve: {
-			getMcqByIndex: ['$stateParams', function(stateParams){
-				console.log(stateParams);
+			getMcqByIndex: ['$stateParams', 'mcqService', function(stateParams, mcqService){
+				if(stateParams.index >= 0){
+					return mcqService.getMcqByIndex(stateParams.index);
+				}
 			}]
 		}
 	}
