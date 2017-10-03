@@ -3,7 +3,7 @@ angular.module('MCQ').filter('capitalize', function() {
   // Create the return function and set the required parameter as well as an optional paramater
   return function(input, char) {
 
-    if (isNaN(input)) {
+    if (input && isNaN(input)) {
 
       // If the input data is not a number, perform the operations to capitalize the correct letter.
       var char = char - 1 || 0;

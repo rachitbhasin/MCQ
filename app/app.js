@@ -64,8 +64,26 @@ mcqApp.config([
 		}
 	}
 
+	var takeState = {
+		name: 'take',
+		url: '/take',
+		templateUrl: './controllers/take/index.html',
+		controller: 'TakeController',
+		params: {
+			index: null
+		},
+		resolve: {
+			getMcqByIndex: ['$stateParams', 'mcqService', function(stateParams, mcqService){
+				if(stateParams.index >= 0){					
+					return mcqService.getMcqByIndex(stateParams.index);
+				}
+			}]
+		}
+	}
+
 	stateProvider.state(homeState);
   	stateProvider.state(createState);
   	stateProvider.state(notFound);
   	stateProvider.state(updateState);
+  	stateProvider.state(takeState);
 }]);

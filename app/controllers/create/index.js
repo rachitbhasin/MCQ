@@ -1,8 +1,8 @@
 angular.module('MCQ').controller('CreateController', ['$scope', '$state', 'mcqService','$mdToast', function(scope, state, mcqService, mdToast){
 
 	scope.mcqData = {
-		title: "",
-		technology: "",
+		title: "Test",
+		technology: "java",
 		questions: [
 		]
 	};
@@ -11,15 +11,15 @@ angular.module('MCQ').controller('CreateController', ['$scope', '$state', 'mcqSe
 		event.stopPropagation();
     	event.preventDefault();
 		scope.mcqData.questions.push({
-			question: "",
-			code: "",
-			link:"",
-			correctAnswer: undefined,
+			question: "question_" + (scope.mcqData.questions.length + 1),
+			code: "test fucntion_" + (scope.mcqData.questions.length + 1),
+			link:"Link_" + (scope.mcqData.questions.length  + 1),
+			correctAnswer: Math.floor(Math.random() * 4),
 			answers: [
-				{text: ""},
-				{text: ""},
-				{text: ""},
-				{text: ""},
+				{text: "Ans_1"},
+				{text: "Ans_2"},
+				{text: "Ans_3"},
+				{text: "Ans_4"},
 			]
 		});
 		console.log("onAdd")

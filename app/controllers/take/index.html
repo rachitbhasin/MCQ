@@ -1,0 +1,71 @@
+<section class="m16 container">	
+	<div class="row">
+		<div class="col-xs-4 form-group">					
+            <h3>{{::mcqData.title  | capitalize}}</h3>
+		</div>
+			
+		<div class="col-xs-4 form-group">
+			<h3>{{::mcqData.technology | capitalize}}</h3>
+		</div>
+	</div>
+	
+	<form class="mcq_create_form"
+		name="mcqForm" 
+		novalidate>
+		<div class="row question-bottom-border mt8 p16" x:ng:repeat="question in mcqData.questions track by $index">
+			<!-- Code section -->
+			<div class="form-group col-xs-6">
+				<label for="code">Code</label>
+				<div class="mt8"
+					readonly
+					ui-ace  
+					x:ng:model="question.code"></div>
+			</div>
+
+			<div class="col-xs-6">
+				<label for="code">Answers</label>
+				<div class="row mt8">
+					<md-radio-group class="md-primary"
+						required
+						x:ng:model="question.attemptedAnswer">
+						<div class="col-xs-6 form-group" 
+							x:ng:repeat="answer in question.answers track by $index">
+							<div layout="row" 
+								x:ng:class="mcqData.isSubmitted ? $index === question.attemptedAnswer ? 'correct-answer' : 'incorrect-answer' : ''"
+							>
+								<div class="cross-button-position" x:ng:if="mcqData.isSubmitted">
+									<md-button class="md-icon-button md-button md-ink-ripple">
+										<md-icon class="material-icons"
+											x:ng:class="mcqData.isSubmitted ? $index === question.correctAnswer ? 'color-green' : 'color-red' : ''"
+											layout-right
+										>
+											close
+										</md-icon>
+									</md-button>
+								</div>
+								<md-radio-button aria-label="Answer checkbox"
+									ng-value="$index"
+									class="mtb8">
+									<label class="m0">{{::answer.text}}</label>
+								</md-radio-button>	
+							</div>
+						</div>
+					</md-radio-group>
+				</div>
+
+				<div class="row" x:ng:form="questionForm">
+					<div class="col-xs-4 form-group" >
+						<label for="link" x:ng:bind="question.link"></label>
+					</div>
+				</div>
+				<div>
+					{{question | json}}
+				</div>
+			</div>
+		</div>
+		<md-button aria-label="Submit"
+			class="md-raised md-cornered md-primary" 
+			x:ng:click="onSubmitClicked($event)">Submit</md-button>	
+	</form>		
+</section>
+
