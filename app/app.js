@@ -20,7 +20,7 @@ mcqApp.config([
 
 	locationProvider.html5Mode(true);
 
-	urlRouterProvider.otherwise('/notFound');
+	urlRouterProvider.otherwise('/home');
 
 	var notFound = {
 		name: 'notFound',
